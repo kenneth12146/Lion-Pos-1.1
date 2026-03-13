@@ -11,7 +11,6 @@ Sistema Punto de Venta moderno y escalable construido con tecnologías de vangua
 - ☁️ Arquitectura 100% cloud native
 
 ## 🛠️ Stack tecnológico
-**Frontend:** React 18 + Vite + TailwindCSS  
-**Backend:** ASP.NET Core 10 Web API  
-**Base de datos:** Azure SQL Database  
+**Frontend:** React 18 + Vite + TailwindCSS    
+**Base de datos:** Firebase
 **Imágenes:** Cloudinary CDN
