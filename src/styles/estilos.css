@@ -1,0 +1,757 @@
+/* ========================================
+   LION POS — ESTILOS GLOBALES 2029
+   ======================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #070b14;
+  color: #f0f4ff;
+  line-height: 1.6;
+  font-size: 16px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ========== SCROLLBAR ========== */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(59,130,246,0.4) transparent;
+}
+*::-webkit-scrollbar       { width: 4px; height: 4px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb {
+  background: rgba(59,130,246,0.4);
+  border-radius: 4px;
+}
+*::-webkit-scrollbar-thumb:hover { background: rgba(6,182,212,0.6); }
+
+/* ========== LINKS ========== */
+a {
+  color: #06b6d4;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover { color: #3b82f6; }
+
+/* ========== IMÁGENES ========== */
+img {
+  height: 42px;
+  width: 42px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.3s ease;
+}
+img:hover {
+  border-color: rgba(59,130,246,0.5);
+  box-shadow: 0 0 12px rgba(59,130,246,0.3);
+}
+
+/* ========== CONTENEDOR ========== */
+.container {
+  max-width: 1200px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+.container.narrow { max-width: 520px; }
+
+/* ========== CARDS ========== */
+.card {
+  background: #111827;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.4s;
+  animation: cardBorderCycle 6s ease-in-out infinite;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #3b82f6, #06b6d4, #8b5cf6, #10b981, #3b82f6);
+  background-size: 300% 100%;
+  animation: gradientSlide 5s linear infinite;
+}
+
+@keyframes cardBorderCycle {
+  0%   { border-color: rgba(59,130,246,0.12); }
+  25%  { border-color: rgba(6,182,212,0.15); }
+  50%  { border-color: rgba(139,92,246,0.12); }
+  75%  { border-color: rgba(16,185,129,0.12); }
+  100% { border-color: rgba(59,130,246,0.12); }
+}
+
+@keyframes gradientSlide {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+.card h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #06b6d4;
+}
+
+.card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #f0f4ff;
+}
+
+/* ========== GRILLAS ========== */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* ========== FILA ========== */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+/* ========== FORMULARIOS ========== */
+.form-group { margin-bottom: 16px; }
+
+label {
+  display: block;
+  margin-bottom: 7px;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: rgba(255,255,255,0.5);
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: 9px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  color: #f0f4ff;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+input::placeholder,
+textarea::placeholder { color: rgba(255,255,255,0.2); }
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background: rgba(59,130,246,0.07);
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+}
+
+input[readonly] {
+  background: rgba(255,255,255,0.02);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+select option {
+  background: #111827;
+  color: #f0f4ff;
+}
+
+/* ========== BOTONES ========== */
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  text-decoration: none;
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+  font-family: inherit;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  box-shadow: 0 4px 14px rgba(59,130,246,0.35);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59,130,246,0.5);
+  text-decoration: none;
+}
+
+.btn:active { transform: translateY(0); }
+
+.btn.light {
+  background: rgba(255,255,255,0.06);
+  color: #f0f4ff;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: none;
+}
+.btn.light:hover { background: rgba(255,255,255,0.1); }
+
+.btn.warn, .btn-danger {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  box-shadow: 0 4px 14px rgba(239,68,68,0.35);
+}
+.btn.warn:hover, .btn-danger:hover {
+  box-shadow: 0 6px 20px rgba(239,68,68,0.5);
+}
+
+.btn.success, .btn-success {
+  background: linear-gradient(135deg, #10b981, #059669);
+  box-shadow: 0 4px 14px rgba(16,185,129,0.35);
+}
+.btn.success:hover, .btn-success:hover {
+  box-shadow: 0 6px 20px rgba(16,185,129,0.5);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* ========== TABLAS ========== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+thead tr {
+  background: linear-gradient(90deg, rgba(59,130,246,0.15), rgba(6,182,212,0.1));
+  border-bottom: 1px solid rgba(59,130,246,0.25);
+}
+
+th {
+  padding: 13px 16px;
+  text-align: left;
+  color: #22d3ee;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: transparent;
+}
+
+td {
+  padding: 13px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.65);
+}
+
+tbody tr {
+  transition: background 0.15s;
+  background: transparent;
+}
+
+tbody tr:hover {
+  background: rgba(59,130,246,0.06) !important;
+}
+
+tbody tr:hover td { color: #f0f4ff; }
+tbody tr:last-child td { border-bottom: none; }
+
+/* ========== BADGES ========== */
+.badge {
+  display: inline-block;
+  padding: 4px 11px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.badge.success, .badge-success {
+  background: rgba(16,185,129,0.15);
+  color: #34d399;
+  border: 1px solid rgba(16,185,129,0.3);
+}
+.badge.danger, .badge-danger {
+  background: rgba(239,68,68,0.15);
+  color: #f87171;
+  border: 1px solid rgba(239,68,68,0.3);
+}
+.badge.warning, .badge-warning {
+  background: rgba(245,158,11,0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(245,158,11,0.3);
+}
+.badge.info, .badge-info {
+  background: rgba(6,182,212,0.15);
+  color: #22d3ee;
+  border: 1px solid rgba(6,182,212,0.3);
+}
+
+/* ========== MENSAJES ========== */
+#errorMsg, #successMsg,
+.message {
+  display: none;
+  padding: 13px 18px;
+  border-radius: 9px;
+  margin: 16px 0;
+  font-weight: 500;
+  font-size: 14px;
+  animation: slideIn 0.3s ease;
+  align-items: center;
+  gap: 10px;
+}
+
+#errorMsg, .message.error {
+  background: rgba(239,68,68,0.1);
+  border: 1px solid rgba(239,68,68,0.25);
+  border-left: 3px solid #ef4444;
+  color: #f87171;
+}
+
+#successMsg, .message.success {
+  background: rgba(16,185,129,0.1);
+  border: 1px solid rgba(16,185,129,0.25);
+  border-left: 3px solid #10b981;
+  color: #34d399;
+}
+
+#errorMsg.show, #successMsg.show, .message.show {
+  display: flex;
+}
+
+/* ========== TOAST ========== */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #111827;
+  border: 1px solid rgba(59,130,246,0.3);
+  border-radius: 12px;
+  padding: 14px 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  z-index: 9999;
+  animation: slideUp 0.3s ease;
+  color: #f0f4ff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ========== BANNER ========== */
+.banner {
+  padding: 13px 18px;
+  border-radius: 9px;
+  margin-bottom: 16px;
+  background: rgba(16,185,129,0.08);
+  border: 1px solid rgba(16,185,129,0.25);
+  border-left: 3px solid #10b981;
+  color: #34d399;
+  font-weight: 500;
+  font-size: 14px;
+}
+.banner.warn {
+  background: rgba(239,68,68,0.08);
+  border-color: rgba(239,68,68,0.25);
+  border-left-color: #ef4444;
+  color: #f87171;
+}
+
+/* ========================================
+   LOGIN — PANTALLA COMPLETA
+   ======================================== */
+
+.login-container {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 40px 16px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.login-header img {
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  border: 2px solid rgba(59,130,246,0.4);
+  box-shadow: 0 0 24px rgba(59,130,246,0.3);
+  margin-bottom: 16px;
+}
+
+.login-header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #f0f4ff 0%, #06b6d4 50%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 6px;
+}
+
+.login-header .subtitle,
+.login-header p {
+  color: rgba(255,255,255,0.35);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* Card de login con borde animado */
+.login-container .card {
+  background: rgba(13,18,33,0.95);
+  border: 1px solid rgba(59,130,246,0.2);
+  border-radius: 18px;
+  padding: 30px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+  animation: loginCardGlow 4s ease-in-out infinite;
+}
+
+@keyframes loginCardGlow {
+  0%,100% { box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(59,130,246,0.2); }
+  33%      { box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(6,182,212,0.3); }
+  66%      { box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(139,92,246,0.25); }
+}
+
+/* Inputs de login */
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #f0f4ff;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  width: 100%;
+  transition: all 0.2s;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus {
+  border-color: #3b82f6;
+  background: rgba(59,130,246,0.07);
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+  outline: none;
+}
+
+/* Botón de login */
+.login-container .btn {
+  width: 100%;
+  padding: 13px;
+  font-size: 15px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 50%, #8b5cf6 100%);
+  background-size: 200% 100%;
+  box-shadow: 0 4px 20px rgba(59,130,246,0.4);
+  border-radius: 10px;
+  margin-top: 8px;
+  transition: all 0.3s;
+  animation: btnShimmer 3s linear infinite;
+}
+
+@keyframes btnShimmer {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.login-container .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(59,130,246,0.55);
+}
+
+/* Footer del login */
+.login-footer {
+  text-align: center;
+  margin-top: 20px;
+  color: rgba(255,255,255,0.3);
+  font-size: 13px;
+}
+
+.login-footer a {
+  color: #06b6d4;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.login-footer a:hover { color: #3b82f6; }
+
+/* ========== MODALES — SIEMPRE OSCUROS ========== */
+.modal-content {
+  background: #0d1221 !important;
+  color: #f0f4ff !important;
+  border: 1px solid rgba(59,130,246,0.25) !important;
+}
+
+.modal-content * { color: #f0f4ff !important; }
+
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+  background: rgba(255,255,255,0.05) !important;
+  color: #f0f4ff !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+}
+
+.modal-content input::placeholder,
+.modal-content textarea::placeholder {
+  color: rgba(255,255,255,0.2) !important;
+}
+
+.modal-content input:focus,
+.modal-content select:focus,
+.modal-content textarea:focus {
+  border-color: #3b82f6 !important;
+  background: rgba(59,130,246,0.08) !important;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.15) !important;
+  outline: none !important;
+}
+
+.modal-content select option {
+  background: #0d1221 !important;
+  color: #f0f4ff !important;
+}
+
+/* ========== UTILIDADES ========== */
+.hidden          { display: none !important; }
+.text-center     { text-align: center; }
+.text-right      { text-align: right; }
+
+.mt-1 { margin-top: 8px; }
+.mt-2 { margin-top: 16px; }
+.mt-3 { margin-top: 24px; }
+.mb-1 { margin-bottom: 8px; }
+.mb-2 { margin-bottom: 16px; }
+.mb-3 { margin-bottom: 24px; }
+
+/* ========== ANIMACIONES ========== */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 860px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  table { font-size: 13px; }
+  th, td { padding: 10px 12px; }
+}
+
+@media (max-width: 640px) {
+  html { font-size: 14px; }
+  .card { padding: 16px; }
+  .btn  { padding: 9px 16px; font-size: 13px; }
+  .login-container .card { padding: 22px 18px; }
+}
+
+/* ========================================
+   FIX CRÍTICO — TOPBAR Y HERENCIAS BLANCAS
+   ======================================== */
+
+/* Topbar — sobreescribir cualquier herencia */
+.topbar {
+  background: rgba(7, 11, 20, 0.97) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+  color: #f0f4ff !important;
+}
+
+.topbar * { color: #f0f4ff !important; }
+
+/* Cualquier div que haya quedado blanco por herencia */
+.main-content,
+.page-content,
+.section-content {
+  background: #070b14 !important;
+  color: #f0f4ff !important;
+}
+
+/* Eliminar cualquier background blanco heredado */
+div, section, aside, main, article, header, nav {
+  background-color: transparent;
+}
+
+/* ========================================
+   FACTURA — Legible en pantalla + imprimible
+   ======================================== */
+
+/* Vista en pantalla */
+.factura,
+.recibo,
+.ticket,
+[class*="factura"],
+[class*="recibo"],
+[class*="ticket"],
+[class*="print"] {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border-radius: 10px;
+  padding: 24px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Todos los textos dentro de la factura bien oscuros */
+.factura *,
+.recibo *,
+.ticket *,
+[class*="factura"] *,
+[class*="recibo"] *,
+[class*="ticket"] *,
+[class*="print"] * {
+  color: #0f172a !important;
+}
+
+/* Títulos de factura */
+.factura h1, .factura h2, .factura h3,
+.recibo h1, .recibo h2, .recibo h3,
+[class*="factura"] h1,
+[class*="factura"] h2,
+[class*="factura"] h3 {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+/* Tabla dentro de factura */
+.factura table th,
+.recibo table th,
+[class*="factura"] table th {
+  background: #f1f5f9 !important;
+  color: #1e293b !important;
+  border-bottom: 2px solid #cbd5e1 !important;
+}
+
+.factura table td,
+.recibo table td,
+[class*="factura"] table td {
+  color: #334155 !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+.factura table tbody tr:hover,
+.recibo table tbody tr:hover {
+  background: #f8fafc !important;
+}
+
+/* Líneas divisoras */
+.factura hr, .recibo hr {
+  border-color: #cbd5e1 !important;
+}
+
+/* Subtotales y totales */
+.factura .total,
+.recibo .total,
+[class*="total"] {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+}
+
+/* ========================================
+   @MEDIA PRINT — Para cuando se imprime
+   ======================================== */
+@media print {
+  /* Ocultar sidebar, topbar y botones */
+  .sidebar,
+  .topbar,
+  .topbar-menu-btn,
+  .btn,
+  button,
+  .action-buttons,
+  .sidebar-overlay {
+    display: none !important;
+  }
+
+  /* Contenido principal sin margen del sidebar */
+  .main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
+    background: white !important;
+  }
+
+  /* Factura ocupa toda la hoja */
+  .factura,
+  .recibo,
+  .ticket,
+  [class*="factura"],
+  [class*="recibo"] {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Todo el texto negro para impresión */
+  * {
+    color: #000 !important;
+    background: white !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Tabla de impresión con bordes visibles */
+  table, th, td {
+    border: 1px solid #ccc !important;
+  }
+
+  th {
+    background: #f1f5f9 !important;
+    font-weight: bold !important;
+  }
+}
